@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ValueComponent } from './value/value.component';
-import { NavComponent } from './nav/nav.component';
+import { NavComponent } from './layout/nav/nav.component';
 
 @NgModule({
    declarations: [
