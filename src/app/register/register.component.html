@@ -1,0 +1,62 @@
+<div class="container" id="title">
+  <div style="text-align: center">
+    <img style="margin-top: 1rem;" src="../../assets/logos/thunder2.jpg" height="100px" width="100px">
+    <h1 style="margin-top: 2rem;">Find Your Match</h1>
+      <p class="text-center">Come and see your matches... Just sing up!</p>
+        <div class="text-center">
+            <button class="btn btn-outline-warning btn-md add-margin-right" (click)="ngOnSingUpClick(true)" >Sing Up!</button>
+            <button class="btn btn-outline-secondary btn-md"> Read Conditions!</button>
+        </div>
+  </div>
+</div>
+
+<div *ngIf="this.isVisible" class="container" id="registerContainer">
+  <div class="row justify-content-center">
+    <div class="col-md-4">
+        <form>
+              <div class="form-group">
+                <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+              </div>
+              <div class="form-group">
+                  <input type="number" class="form-control" id="inputPhone4" placeholder="Phone">
+              </div>
+            <div class="form-group">
+              <input type="text" class="form-control" id="inputAddress" placeholder="Address 1: 1234 Main St">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" id="inputAddress2" placeholder="Address 2: Apartment, studio, or floor">
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-4">
+                  <select id="inputCountry" class="form-control">
+                  <option selected>Country</option>
+                  <option>...</option>
+                  </select>
+              </div>   
+              <div class="form-group col-md-4">
+                  <select id="inputCity" class="form-control">
+                  <option selected>City</option>
+                  <option>...</option>
+                  </select>
+              </div>    
+              <div class="form-group col-md-4">
+                <select id="inputState" class="form-control">
+                  <option selected>State</option>
+                  <option>...</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="inputZip" placeholder="Zip Code">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+            </div>
+            <div class="form-group">
+                  <input type="password" class="form-control" id="inputConfirmPassword4" placeholder="Confirm Password">
+            </div>
+            <button type="submit" class="btn btn-outline-primary">Sign in</button>
+          </form>
+    </div>
+  </div>
+</div>

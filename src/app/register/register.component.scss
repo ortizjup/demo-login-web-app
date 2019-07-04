@@ -1,0 +1,36 @@
+div[id$="registerContainer"]{
+    margin-top: 2rem;
+    margin-bottom: 3.5rem;
+}
+
+.btn-md{
+    margin-right: 5px;
+}
+
+div[id$="title"]{
+    margin-top: 5rem;
+}
+
+.form-group input{
+   border-left-color: transparent !important;
+   border-right-color: transparent !important;
+   border-top-color: transparent !important;
+   border-bottom-color: #fd7e14 !important;
+   border-bottom-width: 3px;
+   & input:hover{
+       color: transparent;
+   } 
+}
+
+
+.form-group select{
+    border-left-color: transparent !important;
+    border-right-color: transparent !important;
+    border-top-color: transparent !important;
+    border-bottom-color: #fd7e14 !important; 
+    border-bottom-width: 3px;
+    & input:hover{
+        color: transparent;
+    }
+ }
+ 

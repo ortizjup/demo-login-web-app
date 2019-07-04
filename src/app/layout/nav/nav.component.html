@@ -11,9 +11,10 @@
     <li class="nav-item">
       <a class="nav-link disabled" href="#">Messages</a>
     </li>
+    <li class="nav-item">
+      <a class="nav-link" (click)="logOut()" >Log Out!</a>
+    </li>
   </ul>
-
-  <button type="button" (click)="logOut()" class="btn btn-primary">Log Out!</button>
 
   <div *ngIf="loggedIn()" class="dropdown">
     <a class="dropdown-toggle text-light">
@@ -63,6 +64,6 @@
     </div>
 
 
-    <button [disabled]= "!loginForm.valid" class="btn btn-success my-2 my-sm-0" type="submit">Login</button>
+    <button [disabled]= "!loginForm.valid" class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
   </form>
 </nav>
