@@ -1,62 +1,60 @@
-<div class="container" id="title">
-  <div style="text-align: center">
-    <img style="margin-top: 1rem;" src="../../assets/logos/thunder2.jpg" height="100px" width="100px">
-    <h1 style="margin-top: 2rem;">Find Your Match</h1>
-      <p class="text-center">Come and see your matches... Just sing up!</p>
-        <div class="text-center">
-            <button class="btn btn-outline-warning btn-md add-margin-right" (click)="ngOnSingUpClick(true)" >Sing Up!</button>
-            <button class="btn btn-outline-secondary btn-md"> Read Conditions!</button>
-        </div>
-  </div>
-</div>
-
-<div *ngIf="this.isVisible" class="container" id="registerContainer">
-  <div class="row justify-content-center">
+<div class="row justify-content-center">
     <div class="col-md-4">
-        <form>
+      <div style="margin-top: 3rem; margin-bottom: 2rem; display: flex; justify-content: center">
+          <h1>Sing Up!</h1>
+      </div>
+        <form #registerForm="ngForm" (ngSubmit)="register()">
               <div class="form-group">
-                <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                <input type="email" class="form-control" 
+                       id="inputEmail4" placeholder="Email"
+                       required [(ngModel)]="userModel.email"
+                       name="email">
               </div>
               <div class="form-group">
-                  <input type="number" class="form-control" id="inputPhone4" placeholder="Phone">
+                  <input type="number" class="form-control" 
+                         id="inputPhone4" placeholder="Phone"
+                         required [(ngModel)]="userModel.phone"
+                         name="phone">
               </div>
             <div class="form-group">
-              <input type="text" class="form-control" id="inputAddress" placeholder="Address 1: 1234 Main St">
+              <input type="text" class="form-control" 
+                     id="inputAddress" placeholder="Address 1: 1234 Main St"
+                     required [(ngModel)]="userModel.adress"
+                     name="adress">
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" id="inputAddress2" placeholder="Address 2: Apartment, studio, or floor">
+              <input type="text" class="form-control" 
+                     id="inputAddress2" placeholder="Address 2: Apartment, studio, or floor"
+                     required [(ngModel)]="userModel.adress2"
+                     name="adress2">
             </div>
             <div class="form-row">
               <div class="form-group col-md-4">
-                  <select id="inputCountry" class="form-control">
-                  <option selected>Country</option>
-                  <option>...</option>
+                  <select id="inputCountry" class="form-control" required [(ngModel)]="userModel.country" name="county">
+                  <option>1</option>
                   </select>
               </div>   
               <div class="form-group col-md-4">
-                  <select id="inputCity" class="form-control">
-                  <option selected>City</option>
-                  <option>...</option>
+                  <select id="inputCity" class="form-control" required [(ngModel)]="userModel.city" name="city">
+                  <option>2</option>
                   </select>
               </div>    
               <div class="form-group col-md-4">
-                <select id="inputState" class="form-control">
-                  <option selected>State</option>
-                  <option>...</option>
+                <select id="inputState" class="form-control" required [(ngModel)]="userModel.state" name="state">
+                  <option>3</option>
                 </select>
               </div>
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" id="inputZip" placeholder="Zip Code">
+                <input type="text" class="form-control" id="inputZip" placeholder="Zip Code" 
+                       required [(ngModel)]="userModel.zip" name="zipcode">
             </div>
             <div class="form-group">
-                <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+                <input type="password" class="form-control" id="inputPassword4" placeholder="Password" 
+                       required [(ngModel)]="userModel.password" name="password">
             </div>
-            <div class="form-group">
-                  <input type="password" class="form-control" id="inputConfirmPassword4" placeholder="Confirm Password">
-            </div>
-            <button type="submit" class="btn btn-outline-primary">Sign in</button>
+            <button type="submit" class="btn btn-outline-primary mt-3 mr-3">Sign in</button>
+            <button type="button" class="btn btn-outline-danger mt-3" (click)="cancell()">Cancell</button>
           </form>
     </div>
   </div>
-</div>

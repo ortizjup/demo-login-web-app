@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { IUser } from '../models/IUser';
+import { isBuffer } from 'util';
 
 @Component({
   selector: 'app-register',
@@ -7,19 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterComponent implements OnInit {
 
-  isVisible: Boolean = false;
+  userModel: IUser = <IUser>{};
   
   constructor() { }
 
   ngOnInit() {
   }
 
-  ngOnSingUpClick(show: Boolean){
-    if(this.isVisible !== show){
-      this.isVisible = true;
-    }else{
-      this.isVisible = false;
-    }
+  register(){
+    console.log("Method Hitted");
+    console.log(this.userModel);
+  }
+
+  cancell(){
+    
   }
 
 }

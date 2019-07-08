@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  registerMode: Boolean = false;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  showRegisterForm(){
+    this.registerMode = !this.registerMode;
   }
 
 }
