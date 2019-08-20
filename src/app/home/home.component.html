@@ -4,14 +4,14 @@
     <h1 style="margin-top: 2rem;">Find Your Match</h1>
       <p class="text-center">Come and see your matches... Just sing up!</p>
         <div class="text-center">
-            <button class="btn btn-outline-warning btn-md add-margin-right" (click)="showRegisterForm()" >Sing Up!</button>
+            <button class="btn btn-outline-warning btn-md add-margin-right" (click)="showRegisterForm(true)" >Sing Up!</button>
             <button class="btn btn-outline-secondary btn-md"> Read Conditions!</button>
         </div>
   </div>
 
   
   <div *ngIf="registerMode" class="container" id="registerContainer">
-    <app-register></app-register>
+    <app-register (cancellRegister)="showRegisterForm($event)"></app-register>
   </div>
 
 </div>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { IUser } from '../models/IUser';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -7,15 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  registerMode: Boolean = false;
+  registerMode: Boolean;
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  showRegisterForm(){
-    this.registerMode = !this.registerMode;
+  showRegisterForm(show: boolean){
+    console.log('Home event received ' + show);
+    this.registerMode = show;
   }
-
 }

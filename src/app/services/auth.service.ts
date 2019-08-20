@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { map } from 'rxjs/operators';
+import { IUser } from '../models/IUser';
+import { IRegisterUser } from '../models/Dtos/IRegisterUser';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +25,10 @@ login(model: any){
             }
         })
       );
+}
+
+register(userForRegisterDto: IRegisterUser){
+  return this.http.post(this.baseUrl + '/register', userForRegisterDto);
 }
 
 }

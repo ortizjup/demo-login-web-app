@@ -28,23 +28,22 @@
                      required [(ngModel)]="userModel.adress2"
                      name="adress2">
             </div>
-            <div class="form-row">
-              <div class="form-group col-md-4">
+              <div class="form-group">
                   <select id="inputCountry" class="form-control" required [(ngModel)]="userModel.country" name="county">
-                  <option>1</option>
+                    <option *ngFor="let country of countries" [ngValue]="country">{{country.description}}</option>
                   </select>
               </div>   
-              <div class="form-group col-md-4">
-                  <select id="inputCity" class="form-control" required [(ngModel)]="userModel.city" name="city">
-                  <option>2</option>
+              <div class="form-group">
+                  <select id="inputState" class="form-control" required [(ngModel)]="userModel.state" name="state">
+                    <option *ngFor="let state of states" [ngValue]="state">{{state.description}}</option>
                   </select>
-              </div>    
-              <div class="form-group col-md-4">
-                <select id="inputState" class="form-control" required [(ngModel)]="userModel.state" name="state">
-                  <option>3</option>
-                </select>
               </div>
-            </div>
+              <div class="form-group">
+                  <select id="inputCity" class="form-control" required [(ngModel)]="userModel.city" name="city">
+                    
+                    <option *ngFor="let city of cities" [ngValue]="city">{{city.description}}</option>
+                  </select>
+              </div>
             <div class="form-group">
                 <input type="text" class="form-control" id="inputZip" placeholder="Zip Code" 
                        required [(ngModel)]="userModel.zip" name="zipcode">
