@@ -44,17 +44,7 @@ export class RegisterComponent implements OnInit {
   }
 
   register(){
-    console.log('Register method hitted!');
-    
     this.userModel.userName = this.userModel.email;
-    
-    console.log(this.userModel);
-    
-    console.log('City' + this.userModel.city);
-    
-    console.log('State' + this.userModel.state);
-    
-    console.log('Country' + this.userModel.country);
 
     this.authService.register(this.userModel).subscribe(() => {
       Swal.fire({
@@ -64,7 +54,6 @@ export class RegisterComponent implements OnInit {
         timer: 4000
       });
     }, error => {
-      console.log(error);
       Swal.fire({
         title: 'Register Failed!',
         text: error.message,
