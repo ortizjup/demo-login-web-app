@@ -56,7 +56,7 @@ export class RegisterComponent implements OnInit {
     }, error => {
       Swal.fire({
         title: 'Register Failed!',
-        text: error.message,
+        text: error,
         type: 'error',
         showConfirmButton: false
       });

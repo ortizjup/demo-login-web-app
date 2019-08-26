@@ -28,7 +28,7 @@ export class NavComponent implements OnInit {
     }, error => {
       Swal.fire({
         title: 'Login Failed!',
-        text: error.message,
+        text: error,
         type: 'error',
         showConfirmButton: false
       });
