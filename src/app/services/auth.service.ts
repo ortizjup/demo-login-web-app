@@ -31,4 +31,8 @@ register(userForRegisterDto: IRegisterUser){
   return this.http.post(this.baseUrl + '/register', userForRegisterDto);
 }
 
+loggedIn(){
+  const token = localStorage.getItem('token');
+  return !!token;
+}
 }

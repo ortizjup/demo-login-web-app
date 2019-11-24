@@ -17,7 +17,6 @@ export class HomeComponent implements OnInit {
   }
 
   showRegisterForm(show: boolean){
-    console.log('Home event received ' + show);
     this.registerMode = show;
   }
 }
