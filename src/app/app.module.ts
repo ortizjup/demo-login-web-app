@@ -26,7 +26,8 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
       BrowserModule,
       AppRoutingModule,
       HttpClientModule,
-      FormsModule
+      FormsModule,
+      BsDropdownModule.forRoot()
    ],
    providers: [
       AuthService,
