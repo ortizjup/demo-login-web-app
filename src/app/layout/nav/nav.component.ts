@@ -1,3 +1,5 @@
+import { AlertifyService } from './../../services/alertify.service';
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import Swal from 'sweetalert2';
@@ -11,7 +13,7 @@ export class NavComponent implements OnInit {
 
   model: any = {};
 
-  constructor(public authService: AuthService) { }
+  constructor(private authService: AuthService, private alertify: AlertifyService, private router: Router) { }
 
   ngOnInit() {
 
@@ -19,19 +21,10 @@ export class NavComponent implements OnInit {
 
   login(){
     this.authService.login(this.model).subscribe(next => {
-      Swal.fire({
-        title: 'Login Succed!',
-        text: 'Welcome!',
-        type: 'success',
-        timer: 4000
-      });
+      this.alertify.success('Logging succed!');
+      this.router.navigate(['/members']);
     }, error => {
-      Swal.fire({
-        title: 'Login Failed!',
-        text: error,
-        type: 'error',
-        showConfirmButton: false
-      });
+      this.alertify.error('Error while loggin you: ' + error);
     });
   }
 
@@ -41,14 +34,9 @@ export class NavComponent implements OnInit {
 
   logOut(){
     if(this.loggedIn()){
-      localStorage.removeItem('token');
-      Swal.fire({
-        title: 'Logged Out',
-        text: 'You have been logged out of Dating App',
-        type: 'success',
-        showConfirmButton: false,
-        timer: 3000
-      });
+      this.authService.logOut();
+      this.alertify.warning('You have been logged out of Dating App!');
+      this.router.navigate(['/home']);
     }
   }
 

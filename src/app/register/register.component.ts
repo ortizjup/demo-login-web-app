@@ -8,6 +8,7 @@ import { ICity } from '../models/ICity';
 import { IState } from '../models/IState';
 import { ICountry } from '../models/ICountry';
 import { AlertifyService } from '../services/alertify.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -35,7 +36,7 @@ export class RegisterComponent implements OnInit {
     {id: 2, description: 'Unitade States'}
   ];
 
-  constructor(private authService: AuthService, private alertify: AlertifyService) { }
+  constructor(private authService: AuthService, private alertify: AlertifyService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -48,20 +49,9 @@ export class RegisterComponent implements OnInit {
     this.userModel.userName = this.userModel.email;
     this.authService.register(this.userModel).subscribe(() => {
       this.alertify.success('User Registration succed!');
-      Swal.fire({
-        title: 'Register Succed!',
-        text: 'Welcome dating app ' + this.userModel.userName + '!',
-        type: 'success',
-        timer: 4000
-      });
+      this.router.navigate(['/home']);
     }, error => {
       this.alertify.error('Register failed: ' + error);
-      Swal.fire({
-        title: 'Register Failed!',
-        text: error,
-        type: 'error',
-        showConfirmButton: false
-      });
     });
   }
 
