@@ -7,8 +7,15 @@ import { Routes } from '@angular/router';
 
 export const appRoutes: Routes = [
     {path: 'home', component: HomeComponent},
-    {path: 'members', component: MemberListsComponent, canActivate: [AuthGuard]},
-    {path: 'messages', component: MessagesComponent},
-    {path: 'lists', component: ListsComponent},
-    {path: '**', redirectTo: 'home',   pathMatch: 'full'}
+    {
+        path:'',
+        runGuardsAndResolvers: 'always',
+        canActivate: [AuthGuard],
+        children: [
+            {path: 'members', component: MemberListsComponent, canActivate: [AuthGuard]},
+            {path: 'messages', component: MessagesComponent},
+            {path: 'lists', component: ListsComponent},  
+        ]  
+    },
+    {path: '**', redirectTo: 'home',   pathMatch: 'full'},
 ];
