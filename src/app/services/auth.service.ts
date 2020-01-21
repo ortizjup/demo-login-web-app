@@ -12,14 +12,14 @@ import {JwtHelperService} from '@auth0/angular-jwt';
 
 export class AuthService {
 
-private baseUrl: string = environment.baseUrl + '/auth';
+private baseUrl: string = environment.baseUrl + 'auth/';
 jwtHelper = new JwtHelperService();
 decodedToken: any;
 
 constructor(private http: HttpClient) { }
 
 login(model: any){
-  return this.http.post(this.baseUrl+'/login', model)
+  return this.http.post(this.baseUrl+'login/', model)
     .pipe(
         map((response: any) => {
             const user = response;
@@ -32,7 +32,7 @@ login(model: any){
 }
 
 register(userForRegisterDto: IRegisterUser){
-  return this.http.post(this.baseUrl + '/register', userForRegisterDto);
+  return this.http.post(this.baseUrl + 'register/', userForRegisterDto);
 }
 
 loggedIn(){

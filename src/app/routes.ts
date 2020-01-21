@@ -1,7 +1,7 @@
 import { AuthGuard } from './guards/auth.guard';
 import { ListsComponent } from './lists/lists.component';
 import { MessagesComponent } from './messages/messages.component';
-import { MemberListsComponent } from './member-lists/member-lists.component';
+import { MemberListsComponent } from './home/members/member-lists/member-lists.component';
 import { HomeComponent } from './home/home.component';
 import { Routes } from '@angular/router';
 
