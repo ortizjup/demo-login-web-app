@@ -8,6 +8,7 @@ export interface IUser extends IBaseEntity {
     userName: string;
     password?:string;
     gender: string; 
+    interests: string;
     age: number;
     knownAs: string;
     created: Date;
