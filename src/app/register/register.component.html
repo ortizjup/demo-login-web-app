@@ -1,59 +1,51 @@
 <div class="row justify-content-center">
-    <div class="col-md-4">
-      <div style="margin-top: 3rem; margin-bottom: 2rem; display: flex; justify-content: center">
-          <h1>Sing Up!</h1>
-      </div>
-        <form #registerForm="ngForm" (ngSubmit)="register()">
-              <div class="form-group">
-                <input type="email" class="form-control" 
-                       id="inputEmail4" placeholder="Email"
-                       required [(ngModel)]="userModel.email"
-                       name="email">
-              </div>
-              <div class="form-group">
-                  <input type="number" class="form-control" 
-                         id="inputPhone4" placeholder="Phone"
-                         required [(ngModel)]="userModel.phone"
-                         name="phone">
-              </div>
-            <div class="form-group">
-              <input type="text" class="form-control" 
-                     id="inputAddress" placeholder="Address 1: 1234 Main St"
-                     required [(ngModel)]="userModel.adress"
-                     name="adress">
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-control" 
-                     id="inputAddress2" placeholder="Address 2: Apartment, studio, or floor"
-                     required [(ngModel)]="userModel.adress2"
-                     name="adress2">
-            </div>
-              <div class="form-group">
-                  <select id="inputCountry" class="form-control" required [(ngModel)]="userModel.country" name="county">
-                    <option *ngFor="let country of countries" [ngValue]="country">{{country.description}}</option>
-                  </select>
-              </div>   
-              <div class="form-group">
-                  <select id="inputState" class="form-control" required [(ngModel)]="userModel.state" name="state">
-                    <option *ngFor="let state of states" [ngValue]="state">{{state.description}}</option>
-                  </select>
-              </div>
-              <div class="form-group">
-                  <select id="inputCity" class="form-control" required [(ngModel)]="userModel.city" name="city">
-                    
-                    <option *ngFor="let city of cities" [ngValue]="city">{{city.description}}</option>
-                  </select>
-              </div>
-            <div class="form-group">
-                <input type="text" class="form-control" id="inputZip" placeholder="Zip Code" 
-                       required [(ngModel)]="userModel.zip" name="zipcode">
-            </div>
-            <div class="form-group">
-                <input type="password" class="form-control" id="inputPassword4" placeholder="Password" 
-                       required [(ngModel)]="userModel.password" name="password">
-            </div>
-            <button type="submit" class="btn btn-outline-warning mt-3 mr-3">Sign in</button>
-            <button type="button" class="btn btn-outline-secondary mt-3" (click)="cancell()">Cancell</button>
-          </form>
+  <div class="col-md-4">
+    <div style="margin-top: 3rem; margin-bottom: 2rem; display: flex; justify-content: center">
+      <h1>Sing Up!</h1>
     </div>
+    <form #registerForm="ngForm" (ngSubmit)="register()">
+      <div class="form-group">
+        <input type="email" class="form-control" id="inputEmail4" placeholder="Email" required
+          [(ngModel)]="userModel.email" name="email">
+      </div>
+      <div class="form-group">
+        <input type="number" class="form-control" id="inputPhone4" placeholder="Phone" required
+          [(ngModel)]="userModel.phone" name="phone">
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" id="inputAddress" placeholder="Address 1: 1234 Main St" required
+          [(ngModel)]="userModel.adress" name="adress">
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" id="inputAddress2" placeholder="Address 2: Apartment, studio, or floor"
+          required [(ngModel)]="userModel.adress2" name="adress2">
+      </div>
+      <div class="form-group">
+        <select id="inputCountry" class="form-control" required [(ngModel)]="userModel.country" name="county">
+          <option *ngFor="let country of countries" [ngValue]="country">{{country.description}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <select id="inputState" class="form-control" required [(ngModel)]="userModel.state" name="state">
+          <option *ngFor="let state of states" [ngValue]="state">{{state.description}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <select id="inputCity" class="form-control" required [(ngModel)]="userModel.city" name="city">
+
+          <option *ngFor="let city of cities" [ngValue]="city">{{city.description}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" id="inputZip" placeholder="Zip Code" required
+          [(ngModel)]="userModel.zip" name="zipcode">
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control" id="inputPassword4" placeholder="Password" required
+          [(ngModel)]="userModel.password" name="password">
+      </div>
+      <button type="submit" class="btn btn-outline-warning mt-3 mr-3">Sign in</button>
+      <button type="button" class="btn btn-outline-secondary mt-3" (click)="cancell()">Cancell</button>
+    </form>
   </div>
+</div>

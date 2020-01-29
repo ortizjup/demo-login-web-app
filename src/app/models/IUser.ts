@@ -23,6 +23,6 @@ export interface IUser extends IBaseEntity {
     photoUrl: string;
     city: ICity;
     state: IState;
-    country: ICountry;
+    country?: ICountry;
     photos?: IPhoto[];
 }

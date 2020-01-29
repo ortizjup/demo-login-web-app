@@ -1,3 +1,4 @@
+import { IUpdateUserDto } from './../models/Dtos/IUpdateUserDto';
 import { IUser } from './../models/IUser';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -11,13 +12,17 @@ import { Injectable } from '@angular/core';
 export class UserService {
   baseUrl = environment.baseUrl;
 
-constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-getUsers(): Observable<IUser[]>{
-  return this.http.get<IUser[]>(this.baseUrl + 'users'); 
-}
+  getUsers(): Observable<IUser[]> {
+    return this.http.get<IUser[]>(this.baseUrl + 'users');
+  }
 
-getUser(id: any): Observable<IUser>{
-  return this.http.get<IUser>(this.baseUrl + 'users/' + id);
-}
+  getUser(id: any): Observable<IUser> {
+    return this.http.get<IUser>(this.baseUrl + 'users/' + id);
+  }
+
+  updateUser(userDto: IUpdateUserDto) {
+    return this.http.post(this.baseUrl + 'users/', userDto);
+  }
 }

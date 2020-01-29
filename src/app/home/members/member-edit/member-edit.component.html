@@ -1,0 +1,87 @@
+<div class="container" style="margin-top: 6rem;">
+  <div class=row>
+    <div class="col-sm-4">
+      <h1>Your Profile</h1>
+    </div>
+    <div class="col-sm-8">
+      <div *ngIf="editForm.dirty" class="alert alert-danger" role="alert">
+        <strong>Information:</strong> You have unsaved changes. They are going to be lost!
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="card">
+        <img class="card-img-top img-thumbnail" src="{{user.photoUrl}}" alt="{{user.knownAs}}">
+        <div class="card-body">
+          <div>
+            <strong>Location:</strong>
+            <p>{{user.city.description}}, {{user.state.description}}, {{user.country.description}}</p>
+          </div>
+          <div>
+            <strong>Age:</strong>
+            <p>{{user.age}}</p>
+          </div>
+          <div>
+            <strong>Last Active:</strong>
+            <p>{{user.lastActive}}</p>
+          </div>
+          <div>
+            <strong>Member since:</strong>
+            <p>{{user.created}}</p>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="btn-group d-flex">
+            <button [disabled]="!editForm.dirty" form="editForm" class="btn btn-outline-warning btn-block">Save
+              Changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <div class="tab-panel">
+        <tabset class="member-tabset">
+          <tab heading="Edit Profile" id="tab1">
+            <form #editForm="ngForm" id="editForm" (ngSubmit)="updateUser()">
+              <h4>Description</h4>
+              <textarea class="form-control" name="introduction" rows="6" [(ngModel)]="user.introduction">
+              </textarea>
+              <h4>Looking For</h4>
+              <textarea class="form-control" name="lookingFor" rows="6" [(ngModel)]="user.lookingFor">
+              </textarea>
+              <h4>Interests</h4>
+              <textarea class="form-control" name="interests" rows="6" [(ngModel)]="user.interests">
+              </textarea>
+              <h4>Location Details</h4>
+              <div class="form-inline">
+                <label for="country" style="margin-right: 0.5rem;">Country</label>
+                <select style="width: 26%;" id="countryStateSelect" class="form-control" required
+                  [(ngModel)]="user.country" name="country">
+                  <option [ngValue]="user.country" disabled>{{user.country.description}}</option>
+                  <option *ngFor="let country of countries" [ngValue]="country">{{country.description}}</option>
+                </select>
+                <label for="state" style="margin-left: 0.5rem;margin-right: 0.5rem;">State</label>
+                <select style="width: 26%;" id="stateCitySelect" class="form-control" required [(ngModel)]="user.state"
+                  name="state">
+                  <option [ngValue]="user.state" disabled>{{user.state.description}}</option>
+                  <option *ngFor="let state of states" [ngValue]="state">{{state.description}}</option>
+                </select>
+                <label for="city" style="margin-left: 0.5rem;margin-right: 0.5rem;">City</label>
+                <select style="width: 26%;" id="cityStateSelect" class="form-control" required [(ngModel)]="user.city"
+                  name="city">
+                  <option [ngValue]="user.city" disabled>{{user.city.description}}</option>
+                  <option *ngFor="let city of cities" [ngValue]="city">{{city.description}}</option>
+                </select>
+              </div>
+            </form>
+          </tab>
+          <tab heading="Edit Photos">
+            <p>Edit Your Photos Will Go Here!</p>
+          </tab>
+        </tabset>
+      </div>
+
+    </div>
+  </div>
+</div>

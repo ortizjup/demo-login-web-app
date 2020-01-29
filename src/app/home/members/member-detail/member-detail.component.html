@@ -1,4 +1,7 @@
 <div class="container" style="margin-top: 6rem;">
+  <div>
+    <h1>{{user.knownAs}}</h1>
+  </div>
   <div class="row">
     <div class="col-sm-4">
       <div class="card">
@@ -31,7 +34,7 @@
     </div>
     <div class="col-sm-8">
       <div class="tab-panel">
-        <tabset class="member-tabset"> 
+        <tabset class="member-tabset">
           <tab heading="About {{user.knownAs}}" id="tab1">
             <h4>Description</h4>
             <p>{{user.introduction}}</p>
@@ -50,7 +53,6 @@
           </tab>
         </tabset>
       </div>
-       
     </div>
   </div>
 </div>

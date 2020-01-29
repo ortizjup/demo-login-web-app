@@ -1,3 +1,4 @@
+import { LocationService } from './../services/location.service';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { IUser } from '../models/IUser';
 import { isBuffer } from 'util';
@@ -8,7 +9,7 @@ import { ICity } from '../models/ICity';
 import { IState } from '../models/IState';
 import { ICountry } from '../models/ICountry';
 import { AlertifyService } from '../services/alertify.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -21,28 +22,42 @@ export class RegisterComponent implements OnInit {
 
   userModel: IRegisterUser = <IRegisterUser>{};
 
-  cities: ICity[] = [
-    {id: 1, description: 'Cordoba'},
-    {id: 2, description: 'Chicago'}
-  ];
+  cities: ICity[];
 
-  states: IState[] = [
-    {id: 1, description: 'Cordoba'},
-    {id: 2, description: 'Omaha'}
-  ];
+  states: IState[];
 
-  countries: ICountry[] = [
-    {id: 1, description: 'Argentina'},
-    {id: 2, description: 'Unitade States'}
-  ];
+  countries: ICountry[];
 
-  constructor(private authService: AuthService, private alertify: AlertifyService, private router: Router) { }
+  constructor(private authService: AuthService
+              ,private alertify: AlertifyService
+              ,private router: Router
+              ,private locationService: LocationService
+              ,private route: ActivatedRoute) { }
 
   ngOnInit() {
+    
+    this.locationService.getCities().subscribe((response: ICity[]) => {
+      this.cities = response;
+    }, error => {
+      this.alertify.error('We could no load city list');
+    });
+
+    this.locationService.getCountries().subscribe((response: ICountry[]) => {
+      this.countries = response;
+    }, error => {
+      this.alertify.error('We could no load country list');
+    });
+
+    this.locationService.getStates().subscribe((response: IState[]) => {
+      this.states = response;
+    }, error => {
+      this.alertify.error('We could no load stae list');
+    });
   }
 
   cancell(){
     this.cancellRegister.emit(false);
+    
   }
 
   register(){

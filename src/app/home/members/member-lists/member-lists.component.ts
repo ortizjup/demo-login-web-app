@@ -14,8 +14,8 @@ export class MemberListsComponent implements OnInit {
   users: IUser[];
 
   constructor(private userService: UserService
-             , private route: ActivatedRoute
-             , private alertify: AlertifyService) { }
+    , private route: ActivatedRoute
+    , private alertify: AlertifyService) { }
 
   ngOnInit() {
     this.route.data.subscribe(data => {
