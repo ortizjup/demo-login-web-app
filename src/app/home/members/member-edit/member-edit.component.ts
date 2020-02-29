@@ -43,7 +43,7 @@ export class MemberEditComponent implements OnInit {
 
   ngOnInit() {
     this.route.data.subscribe(data => {
-      this.user = data['user'];
+      this.user = data['user']
     });
 
     this.route.data.subscribe(data => {

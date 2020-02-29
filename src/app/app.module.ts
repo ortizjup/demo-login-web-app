@@ -1,3 +1,4 @@
+import { PhotosEditorComponent } from './home/members/photos-editor/photos-editor.component';
 import { PreventUnsavedChanges } from './guards/prevent-unsaved-changes.guard';
 import { StateResolver } from './resolvers/state-resolver';
 import { CountryResolver } from './resolvers/country-resolver';
@@ -54,7 +55,8 @@ export class CustomHamerConfig extends HammerGestureConfig{
       MessagesComponent,
       MemberCardComponent,
       MemberDetailComponent,
-      MemberEditComponent
+      MemberEditComponent,
+      PhotosEditorComponent
    ],
    imports: [
       BsDropdownModule.forRoot(),
