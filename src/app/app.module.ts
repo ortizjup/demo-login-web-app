@@ -31,6 +31,7 @@ import { appRoutes } from './routes';
 import { MemberDetailResolver } from './resolvers/member-detail-resolver';
 import { MemberEditResolver } from './resolvers/member-edit-resolver'
 import { MemberListResolver } from './resolvers/member-list-resolver';
+import { FileSelectDirective, FileUploader, FileUploadModule } from 'ng2-file-upload';
 
 export function tokenGetter(){
    return localStorage.getItem('token');
@@ -64,6 +65,7 @@ export class CustomHamerConfig extends HammerGestureConfig{
       AppRoutingModule,
       HttpClientModule,
       FormsModule,
+      FileUploadModule,
       BsDropdownModule.forRoot(),
       RouterModule.forRoot(appRoutes),
       JwtModule.forRoot({
