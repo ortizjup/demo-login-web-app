@@ -1,3 +1,4 @@
+import { IUser } from './models/IUser';
 import { Component, OnInit } from '@angular/core';
 import {JwtHelperService} from '@auth0/angular-jwt';
 import { AuthService } from './services/auth.service';
@@ -15,8 +16,12 @@ export class AppComponent implements OnInit {
 
   ngOnInit(){
     const token = localStorage.getItem('token');
+    const user: IUser = JSON.parse(localStorage.getItem('user'));
     if(token){
       this.authService.decodedToken = this.jwtHelper.decodeToken(token);
+    }
+    if(user){
+      this.authService.currentUser = user;
     }
   }
 }
