@@ -1,3 +1,4 @@
+import { IPhoto } from './../models/IPhoto';
 import { IUpdateUserDto } from './../models/Dtos/IUpdateUserDto';
 import { IUser } from './../models/IUser';
 import { Observable } from 'rxjs';
@@ -28,5 +29,9 @@ export class UserService {
 
   setMainPhoto(userId: number, id: number){
     return this.http.post(this.baseUrl + 'users/' + userId + '/photos/' + id + '/setMain', {});
+  }
+
+  deletePhoto(userId: number, photoId: number){
+    return this.http.delete(this.baseUrl + 'users/' + userId + '/photos/' + photoId, {})
   }
 }

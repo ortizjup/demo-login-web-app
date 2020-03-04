@@ -1,3 +1,4 @@
+import Swal from 'sweetalert2';
 import { AlertifyService } from './../../../services/alertify.service';
 import { IUser } from './../../../models/IUser';
 import { UserService } from 'src/app/services/user.service';
@@ -69,13 +70,36 @@ export class PhotosEditorComponent implements OnInit {
   public setMainPhoto(photo: IPhoto){
     this.userService.setMainPhoto(this.authService.decodedToken.nameid, photo.id).subscribe((response: IPhoto[]) => {
       if(response.length){
-        console.log(response);
-        this.alertifyService.success("Main photo has been updated!")
+        this.alertifyService.success("Main photo has been updated!");
         this.photos = response;
         this.getMemberPhotoChange.emit(photo.url);
+        this.authService.changeMemberPhoto(photo.url);
+        this.authService.currentUser.photoUrl = photo.url;
+        localStorage.setItem('user', JSON.stringify(this.authService.currentUser));
       }
     }, error => {
       this.alertifyService.error(error);
     });
   } 
+
+  public deletePhoto(photo: IPhoto){
+    Swal.fire({
+      title: 'Are you sure?',
+      type: 'warning',
+      text: 'You want be able to rever changes!',
+      showConfirmButton: true,
+      showCancelButton: true
+    }).then((result) => {
+      if (result.value) {
+        console.log(photo.id);
+        console.log(this.authService.decodedToken.nameid);
+        this.userService.deletePhoto(this.authService.decodedToken.nameid, photo.id).subscribe(() => {
+          this.photos.splice(this.photos.findIndex(p => p.id === photo.id), 1);
+          this.alertifyService.success("Photo has been deleted!");
+        }, error => {
+          this.alertifyService.error(error);
+        });
+      }
+    });
+  }
 }

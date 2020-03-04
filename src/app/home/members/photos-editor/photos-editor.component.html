@@ -3,7 +3,7 @@
   <img src="{{photo.url}}" class="img-thumbnail p-1" alt="">
   <div class="text-center">
     <button type="button" style="margin-left: 1px;" class="btn btn-sm" [disabled]="photo.isMain" (click)="setMainPhoto(photo)"><i *ngIf="photo.isMain" class="fa fa-check"></i>Main</button>
-    <button type="button" class="btn btn-sm"><i class="fa fa-trash-o"></i></button>
+    <button type="button" class="btn btn-sm" [disabled]="photo.isMain" (click)="deletePhoto(photo)"><i class="fa fa-trash-o"></i></button>
   </div>
  </div>
 </div>

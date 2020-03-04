@@ -1,3 +1,4 @@
+import { NavComponent } from './layout/nav/nav.component';
 import { PreventUnsavedChanges } from './guards/prevent-unsaved-changes.guard';
 import { StateResolver } from './resolvers/state-resolver';
 import { CountryResolver } from './resolvers/country-resolver';
@@ -32,7 +33,7 @@ export const appRoutes: Routes = [
                
             }, canDeactivate: [PreventUnsavedChanges]},
             {path: 'messages', component: MessagesComponent},
-            {path: 'lists', component: ListsComponent},  
+            {path: 'lists', component: ListsComponent},
         ]  
     },
     {path: '**', redirectTo: '',   pathMatch: 'full'},
