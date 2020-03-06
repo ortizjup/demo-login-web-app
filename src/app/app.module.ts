@@ -1,4 +1,5 @@
 import { PhotosEditorComponent } from './home/members/photos-editor/photos-editor.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PreventUnsavedChanges } from './guards/prevent-unsaved-changes.guard';
 import { StateResolver } from './resolvers/state-resolver';
 import { CountryResolver } from './resolvers/country-resolver';
@@ -14,7 +15,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { JwtModule } from '@auth0/angular-jwt';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { NgxGalleryModule, CustomHammerConfig } from 'ngx-gallery';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ValueComponent } from './value/value.component';
@@ -32,6 +32,7 @@ import { MemberDetailResolver } from './resolvers/member-detail-resolver';
 import { MemberEditResolver } from './resolvers/member-edit-resolver'
 import { MemberListResolver } from './resolvers/member-list-resolver';
 import { FileSelectDirective, FileUploader, FileUploadModule } from 'ng2-file-upload';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 export function tokenGetter(){
    return localStorage.getItem('token');
@@ -76,7 +77,10 @@ export class CustomHamerConfig extends HammerGestureConfig{
          }
       }),
       TabsModule.forRoot(),
-      NgxGalleryModule
+      NgxGalleryModule,
+      ReactiveFormsModule,
+      BrowserAnimationsModule,
+      BsDatepickerModule.forRoot(),
    ],
    providers: [
       AuthService,

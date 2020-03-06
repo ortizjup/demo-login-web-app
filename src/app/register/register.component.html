@@ -3,48 +3,113 @@
     <div style="margin-top: 3rem; margin-bottom: 2rem; display: flex; justify-content: center">
       <h1>Sing Up!</h1>
     </div>
-    <form #registerForm="ngForm" (ngSubmit)="register()">
+    <form [formGroup]="registerForm" (ngSubmit)="register()">
       <div class="form-group">
-        <input type="email" class="form-control" id="inputEmail4" placeholder="Email" required
-          [(ngModel)]="userModel.email" name="email">
+        <label class="control-label" style="margin-right:10px">Gender: </label>
+        <label class="radio-inline">
+          <input class="mr-3" type="radio" value="male" formControlName="gender">Male
+        </label>
+        <label class="radio-inline ml-3">
+          <input class="mr-3" type="radio" value="female" formControlName="gender">Female
+        </label>
       </div>
       <div class="form-group">
-        <input type="number" class="form-control" id="inputPhone4" placeholder="Phone" required
-          [(ngModel)]="userModel.phone" name="phone">
+        <input type="email" class="form-control" id="inputEmail4" placeholder="Email"  name="email" formControlName="userName"
+        [ngClass]="{'is-invalid': registerForm.get('userName').errors && registerForm.get('userName').touched}">
+        <div class="invalid-feedback"
+         *ngIf="registerForm.get('userName').hasError('required') 
+         && registerForm.get('userName').touched">Please enter an email adress</div>
       </div>
       <div class="form-group">
-        <input type="text" class="form-control" id="inputAddress" placeholder="Address 1: 1234 Main St" required
-          [(ngModel)]="userModel.adress" name="adress">
+        <input type="knownAs" class="form-control" id="knownAs" placeholder="Known As"  name="knownAs" formControlName="knownAs"
+        [ngClass]="{'is-invalid': registerForm.get('knownAs').errors && registerForm.get('knownAs').touched}">
+        <div class="invalid-feedback"
+         *ngIf="registerForm.get('knownAs').hasError('required') 
+         && registerForm.get('knownAs').touched">Please enter your nick name</div>
+      </div>
+      <div class="form-group">
+        <input type="text"
+        id="dateOfBirth"
+        placeholder="Date Of Birth"
+        name="dateOfBirth" 
+        formControlName="dateOfBirth"
+        class="form-control"
+        bsDatepicker
+        [bsConfig]="bsConfig"
+        [ngClass]="{'is-invalid': registerForm.get('dateOfBirth').errors && registerForm.get('dateOfBirth').touched}">
+        <div class="invalid-feedback" *ngIf="registerForm.get('dateOfBirth').hasError('required') 
+        && registerForm.get('dateOfBirth').touched">Please enter date of birth</div>
+      </div>
+      <div class="form-group">
+        <input type="number" class="form-control" id="inputPhone4" placeholder="Phone" name="phone" formControlName="phone"
+        [ngClass]="{'is-invalid': registerForm.get('phone').errors && registerForm.get('phone').touched}">
+        <div class="invalid-feedback" *ngIf="registerForm.get('phone').hasError('required') 
+        && registerForm.get('phone').touched">Please enter phone number</div>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" id="inputAddress" placeholder="Address 1: 1234 Main St" 
+            name="adress" formControlName="adress"
+            [ngClass]="{'is-invalid': registerForm.get('adress').errors && registerForm.get('adress').touched}">
+            <div class="invalid-feedback" *ngIf="registerForm.get('adress').hasError('required') 
+            && registerForm.get('adress').touched">Please enter your address</div>
       </div>
       <div class="form-group">
         <input type="text" class="form-control" id="inputAddress2" placeholder="Address 2: Apartment, studio, or floor"
-          required [(ngModel)]="userModel.adress2" name="adress2">
+            name="adress2" formControlName="adress2">
       </div>
       <div class="form-group">
-        <select id="inputCountry" class="form-control" required [(ngModel)]="userModel.country" name="county">
+        <select id="inputCountry" class="form-control" name="county" formControlName="country" 
+          [ngClass]="{'is-invalid': registerForm.get('country').errors && registerForm.get('country').touched}"> 
           <option *ngFor="let country of countries" [ngValue]="country">{{country.description}}</option>
         </select>
+        <div class="invalid-feedback" *ngIf="registerForm.get('country').hasError('required') 
+        && registerForm.get('country').touched">Please select country</div>
       </div>
       <div class="form-group">
-        <select id="inputState" class="form-control" required [(ngModel)]="userModel.state" name="state">
+        <select id="inputState" class="form-control" name="state" formControlName="state" 
+        [ngClass]="{'is-invalid': registerForm.get('state').errors && registerForm.get('state').touched}">
           <option *ngFor="let state of states" [ngValue]="state">{{state.description}}</option>
         </select>
+        <div class="invalid-feedback" *ngIf="registerForm.get('state').hasError('required') 
+        && registerForm.get('state').touched">Please select state</div>
       </div>
       <div class="form-group">
-        <select id="inputCity" class="form-control" required [(ngModel)]="userModel.city" name="city">
-
+        <select id="inputCity" class="form-control" name="city" formControlName="city"
+        [ngClass]="{'is-invalid': registerForm.get('city').errors && registerForm.get('city').touched}">
           <option *ngFor="let city of cities" [ngValue]="city">{{city.description}}</option>
         </select>
+        <div class="invalid-feedback" *ngIf="registerForm.get('city').hasError('required') 
+        && registerForm.get('city').touched">Please select city</div>
       </div>
       <div class="form-group">
-        <input type="text" class="form-control" id="inputZip" placeholder="Zip Code" required
-          [(ngModel)]="userModel.zip" name="zipcode">
+        <input type="text" class="form-control" id="zip" placeholder="Zip Code" name="zipCode" formControlName="zip"
+        [ngClass]="{'is-invalid': registerForm.get('zip').errors && registerForm.get('zip').touched}">
+        <div class="invalid-feedback" *ngIf="registerForm.get('zip').hasError('required') 
+        && registerForm.get('zip').touched">Please enter zip code</div>
       </div>
       <div class="form-group">
-        <input type="password" class="form-control" id="inputPassword4" placeholder="Password" required
-          [(ngModel)]="userModel.password" name="password">
+        <input type="password" class="form-control" id="inputPassword4" placeholder="Password" name="password" formControlName="password"
+        [ngClass]="{'is-invalid': registerForm.get('password').errors && registerForm.get('password').touched}">
+        <div class="invalid-feedback" *ngIf="registerForm.get('password').hasError('required') 
+        && registerForm.get('password').touched">Please enter password</div>
       </div>
-      <button type="submit" class="btn btn-outline-warning mt-3 mr-3">Sign in</button>
+      <div class="form-group">
+        <input type="password" class="form-control" id="inputPassword4" placeholder="Confirm Password" name="password" formControlName="confirmPassword"
+        [ngClass]="{'is-invalid': registerForm.get('confirmPassword').errors 
+                    && registerForm.get('confirmPassword').touched 
+                    || registerForm.get('confirmPassword').hasError('mismatch')}">
+        <div class="invalid-feedback" 
+        *ngIf="registerForm.get('confirmPassword').hasError('required') 
+        && registerForm.get('confirmPassword').touched">Please enter confirmation password</div>
+        <div class="invalid-feedback" 
+        *ngIf="registerForm.hasError('mismatch') 
+        && registerForm.get('confirmPassword').touched">Password does not match</div>
+        <div class="invalid-feedback" 
+        *ngIf="registerForm.get('confirmPassword').hasError('minlength') 
+        && registerForm.get('confirmPassword').touched">Password must be grater than 8 chars</div>
+      </div>
+      
+      <button type="submit" class="btn btn-outline-warning mt-3 mr-3" [disabled]="!registerForm.valid">Sign in</button>
       <button type="button" class="btn btn-outline-secondary mt-3" (click)="cancell()">Cancell</button>
     </form>
   </div>

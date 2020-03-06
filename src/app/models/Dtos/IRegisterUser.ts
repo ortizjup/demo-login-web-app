@@ -3,7 +3,10 @@ import { ICity } from '../ICity';
 import { IState } from '../IState';
 
 export interface IRegisterUser {
+    gender: string; 
     userName: string;
+    knownAs: string;
+    dateOfBirth: Date;
     password: string;
     email: string;
     phone: string;
