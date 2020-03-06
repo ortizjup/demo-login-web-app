@@ -93,7 +93,7 @@ export class RegisterComponent implements OnInit {
     if(this.registerForm.valid){
       this.userModel = Object.assign({}, this.registerForm.value);
       //easy fix = do not do this on practice just saving time
-      this.userModel.email = this.registerForm.get('username').value;
+      this.userModel.email = this.registerForm.get('userName').value;
       console.log(this.userModel);
       this.authService.register(this.userModel).subscribe(() => {
       this.alertify.success('User Registration succed!');
@@ -102,7 +102,7 @@ export class RegisterComponent implements OnInit {
        this.alertify.error('Register failed: ' + error);
       }, () => {
         this.authService.login(this.userModel).subscribe(() => {
-          this.router.navigate['/members'];
+          this.router.navigate(['/members']);
         });
       });
     }
