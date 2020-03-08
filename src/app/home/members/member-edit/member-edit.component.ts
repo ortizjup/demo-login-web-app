@@ -89,18 +89,19 @@ export class MemberEditComponent implements OnInit {
     //am not following that path since i already have the id in the user form but is posible
     //this.updateUserDto.id = this.authService.decodedToken.nameid;
     this.updateUserDto.id = this.user.id;
+    this.updateUserDto.interests = this.user.interests;
+    this.updateUserDto.introduction = this.user.introduction;
+    this.updateUserDto.lookingFor = this.user.lookingFor;
     this.updateUserDto.City = this.user.city;
     this.updateUserDto.State = this.user.state;
     this.updateUserDto.Country = this.user.country;
-    this.updateUserDto.interests = this.user.interests;
-    this.updateUserDto.introduction = this.user.introduction;
-    this.updateUserDto.lookingFor = this.user.introduction;
 
     this.userService.updateUser(this.updateUserDto).subscribe((response: any) => {
       this.alertify.success("Profile Updated Succesfully!");
       this.editForm.reset(this.user);
     }, error => {
       this.alertify.error(error);
+      console.log(error);
     });
   }
 

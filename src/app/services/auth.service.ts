@@ -17,13 +17,15 @@ export class AuthService {
   jwtHelper = new JwtHelperService();
   decodedToken: any;
   currentUser: IUser;
-  photoUrl = new BehaviorSubject<string>('../../assets/logos/userdefaultimg.png');
+  photoUrl = new BehaviorSubject<string>('../../../assets/logos/userdefaultimg.png');
   currenPhotoUrl = this.photoUrl.asObservable();
+  photoUrl2: string = '../../../assets/logos/userdefaultimg.png';
 
   constructor(private http: HttpClient) { }
 
   changeMemberPhoto(photoUrl: string){
     this.photoUrl.next(photoUrl);
+    this.photoUrl2 = photoUrl;
   }
 
   login(model: any) {
