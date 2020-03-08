@@ -18,13 +18,17 @@ export class AuthService {
   decodedToken: any;
   currentUser: IUser;
   photoUrl = new BehaviorSubject<string>('../../../assets/logos/userdefaultimg.png');
-  currenPhotoUrl = this.photoUrl.asObservable();
+  
+  //Important: Disclaimer (Juan)
+  //this property was not working as an observable on change was not refreshing the photos in diferent modules, so i edited this
+  //but not going to delete it because i want it as an example, pretty clear example of an observable. This has been fix using the photoUrl2 variable
+  //currenPhotoUrl = this.photoUrl.asObservable();
   photoUrl2: string = '../../../assets/logos/userdefaultimg.png';
 
   constructor(private http: HttpClient) { }
 
   changeMemberPhoto(photoUrl: string){
-    this.photoUrl.next(photoUrl);
+    //this.photoUrl.next(photoUrl);
     this.photoUrl2 = photoUrl;
   }
 
