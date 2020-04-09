@@ -34,6 +34,8 @@ import { MemberListResolver } from './resolvers/member-list-resolver';
 import { FileSelectDirective, FileUploader, FileUploadModule } from 'ng2-file-upload';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { TimeAgoPipe } from 'time-ago-pipe';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { ButtonsModule } from 'ngx-bootstrap';
 
 export function tokenGetter(){
    return localStorage.getItem('token');
@@ -63,11 +65,13 @@ export class CustomHamerConfig extends HammerGestureConfig{
       TimeAgoPipe
    ],
    imports: [
+      ButtonsModule.forRoot(),
       BsDropdownModule.forRoot(),
       BrowserModule,
       AppRoutingModule,
       HttpClientModule,
       FormsModule,
+      PaginationModule.forRoot(),
       FileUploadModule,
       BsDropdownModule.forRoot(),
       RouterModule.forRoot(appRoutes),
@@ -82,7 +86,8 @@ export class CustomHamerConfig extends HammerGestureConfig{
       NgxGalleryModule,
       ReactiveFormsModule,
       BrowserAnimationsModule,
-      BsDatepickerModule.forRoot()
+      BsDatepickerModule.forRoot(),
+      PaginationModule.forRoot()
    ],
    providers: [
       AuthService,

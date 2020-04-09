@@ -20,7 +20,7 @@ export class NavComponent implements OnInit {
               }
 
   ngOnInit() {
-   this.authService.currenPhotoUrl.subscribe(photoUrl => this.photoUrl == photoUrl);
+   //this.authService.currenPhotoUrl.subscribe(photoUrl => this.photoUrl == photoUrl);
   }
 
   login(){
